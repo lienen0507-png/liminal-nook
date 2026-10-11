@@ -1,0 +1,62 @@
+  /* 星星鼠標 */
+html,
+body,
+a,
+button {
+  cursor: auto;
+}
+
+/* 自訂星星游標 */
+.star-cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 99999;
+  pointer-events: none;
+  color: var(--gold);
+  font-size: 26px;
+  line-height: 1;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 0 4px var(--gold));
+}
+
+/* 點擊炸開的小星星 */
+.star-particle {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 99998;
+  pointer-events: none;
+  color: var(--gold);
+  font-size: 18px;
+  line-height: 1;
+  animation: star-burst 650ms ease-out forwards;
+}
+
+@keyframes star-burst {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0.5) rotate(0deg);
+  }
+
+  to {
+    opacity: 0;
+    transform:
+      translate(
+        calc(-50% + var(--move-x)),
+        calc(-50% + var(--move-y))
+      )
+      scale(1.5)
+      rotate(150deg);
+  }
+}
+
+
+/* 星星游標必須可以顯示 */
+.star-cursor {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: none !important;
+  z-index: 2147483647 !important;
+}
